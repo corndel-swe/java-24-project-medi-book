@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    image VARCHAR(255)
+    image VARCHAR(255) NOT NULL
 );
 
 -- Create doctors table
@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS doctors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(100) NOT NULL,
     speciality VARCHAR(100) NOT NULL,
-    image VARCHAR(255),
-    biography TEXT
+    image VARCHAR(255) NOT NUll,
+    biography TEXT NOT NULL
 );
 
 -- Create appointments table
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS appointments (
     doctor_id INT NOT NULL,
     start_time TIME NOT NULL,
     date DATE NOT NULL,
-    comment TEXT,
+    comment TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE,
     UNIQUE (doctor_id, date, start_time)
