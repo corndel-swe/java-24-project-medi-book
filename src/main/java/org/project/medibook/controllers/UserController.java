@@ -6,6 +6,7 @@ import org.project.medibook.model.UserRequest;
 import org.project.medibook.repositories.UserRepository;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,23 +16,33 @@ public class UserController {
         try {
             List<User> Users = UserRepository.findAll();
             ctx.render("index.html", Map.of("Users", Users));
+            ctx.status(200);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    //METHOD TO LOG IN User
+
     public static void userLogIn(Context ctx) {
         try {
             String email = ctx.formParam("email");
             String password = ctx.formParam("password");
 
             var user = UserRepository.logUserIn(email, password);
-            ctx.sessionAttribute("userId", user.id());
+
+
+            Map<String, Object> userAttributes = new HashMap<>();
+            userAttributes.put("id", user.id());
+            userAttributes.put("name", user.name());
+            userAttributes.put("image", user.image());
+            ctx.sessionAttribute("userAttributes", userAttributes);
+
             ctx.redirect("/dashboard");
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            ctx.status(500).result("Login failed.");
+
+            ctx.sessionAttribute("errorMessage", "Login failed: " + e.getMessage());
+            ctx.redirect("/");
         }
     }
 }
