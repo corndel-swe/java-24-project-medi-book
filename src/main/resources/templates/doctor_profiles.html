@@ -1,11 +1,21 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Doctors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<h1 class="doctor-title">Our Doctors</h1>
+
+<div class="doctors-container">
+    <div th:each="doctor : ${doctors}" class="doctor-box">
+        <img th:src="${doctor.profile_picture}" alt="Doctor Image" class="doctor-image">
+        <h3 th:text="${doctor.name}">Doctor Name</h3>
+        <h2 th:text="${doctor.speciality}">Doctor Name</h2>
+        <p th:text="${doctor.biography}">Doctor Description</p>
+    </div>
+</div>
 
 </body>
 </html>

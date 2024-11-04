@@ -1,5 +1,6 @@
 package org.project.medibook;
 
+import org.project.medibook.controllers.DoctorController;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import io.javalin.Javalin;
@@ -32,6 +33,8 @@ public class App {
     app.get("/hello", ctx -> {
         ctx.result("Hello, World!");
     });
+
+    app.get("/doctors", DoctorController::renderDoctors);
 
 
     // USER ENDPOINTS
