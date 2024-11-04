@@ -10,8 +10,14 @@ import java.util.Map;
 
 public class AppointmentController {
   public static void getUpcomingAppointmentsByUserId(Context ctx) throws SQLException {
-    int user_id = ctx.sessionAttribute("userId");
-    List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(user_id);
+    int userId = ctx.sessionAttribute("userId");
+    List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(userId);
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
-}
+
+  public static void getPastAppointmentsByUserId(Context ctx) throws SQLException {
+    int userId = ctx.sessionAttribute("userId");
+    List<Appointment> appointments = AppointmentRepository.findPastAppointmentsByUserId(userId);
+    ctx.render("past_appointments", Map.of("appointments", appointments));
+  }
+ }
