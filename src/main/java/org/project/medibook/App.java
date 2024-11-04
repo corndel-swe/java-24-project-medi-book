@@ -1,5 +1,6 @@
 package org.project.medibook;
 
+import org.project.medibook.controllers.AppointmentController;
 import org.project.medibook.controllers.DoctorController;
 import org.project.medibook.controllers.UserController;
 import org.thymeleaf.TemplateEngine;
@@ -46,7 +47,7 @@ public class App {
 
     // APPOINTMENT ENDPOINTS
 
-
+    app.get("/dashboard", AppointmentController::getUpcomingAppointmentsByUserId);
 
 
 
