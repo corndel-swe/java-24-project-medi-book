@@ -47,8 +47,8 @@ public class App {
 
     // APPOINTMENT ENDPOINTS
 
-    app.get("/dashboard", AppointmentController::getUpcomingAppointmentsByUserId);
-    app.get("/appointment-history", AppointmentController::getPastAppointmentsByUserId);
+    app.get("/dashboard", AppointmentController::renderDashboard);
+    app.get("/appointment-history", AppointmentController::renderAppointmentHistory);
 
 
     // DOCTOR ENDPOINTS
