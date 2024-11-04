@@ -1,0 +1,52 @@
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+}
+
+h1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / 2;
+    border: 1px solid red;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+section {
+    grid-row: 2 / 3;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#upcoming-appointments {
+    justify-contents: flex-start;
+    gap: 1.5rem;
+}
+
+#upcoming-appointments article {
+    border: 1px solid blue;
+    width: fit-content;
+    padding: 1rem;
+}
+
+article > * {
+    font-size: 1.25rem;
+}
+
+#links {
+    justify-content: space-evenly;
+}
+
+#links a {
+    border: 1px solid purple;
+    padding: 1.5rem;
+    width: fit-content;
+    font-size: 2rem;
+}

@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
 </head>
 <body>
-
+  <h1>Past Appointments</h1>
+  <article th:each="appointment : ${appointments}">
+    <a th:href="'/appointment/' + ${appointment.id}">
+      <p><b th:text="${appointment.start_time} + ' ' + ${appointment.date}"></b></p>
+      <p th:text="${appointment.doctor_id}"></p>
+    </a>
+  </article>
 </body>
 </html>
