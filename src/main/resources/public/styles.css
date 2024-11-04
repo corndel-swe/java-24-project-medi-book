@@ -1,0 +1,57 @@
+/* Container for all doctor cards */
+.doctors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased spacing between tiles */
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Individual doctor card */
+.doctor-box {
+    width: 300px; /* Increased width */
+    padding: 20px; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
+    text-align: center;
+    transition: transform 0.3s;
+    background-color: #f9f9f9;
+}
+
+.doctor-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Doctor image */
+.doctor-image {
+    width: 120px; /* Increased size */
+    height: 120px; /* Increased size */
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Doctor name and specialty */
+.doctor-box h3 {
+    font-size: 1.4em; /* Increased font size */
+    color: #333;
+    margin: 8px 0;
+}
+
+.doctor-box h2 {
+    font-size: 1.1em; /* Increased font size */
+    color: #777;
+    margin: 8px 0;
+}
+
+/* Doctor biography */
+.doctor-box p {
+    font-size: 1em; /* Slightly larger font size */
+    color: #555;
+    line-height: 1.5; /* Improved readability */
+}
+
+.doctor-title {
+    text-align:center
+}
