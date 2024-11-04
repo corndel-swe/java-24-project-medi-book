@@ -35,7 +35,7 @@ public class UserRepository {
 
     }
     public static LoginResponse logUserIn(String email,  String password) throws SQLException, Exception {
-        String query = "SELECT id, email, password FROM users WHERE email = ?";
+        String query = "SELECT * FROM users WHERE email = ?";
 
         try (var con = DB.getConnection();
              var stmt = con.prepareStatement(query)) {
@@ -45,11 +45,13 @@ public class UserRepository {
                 if (rs.next()) {
                     String emailDB = rs.getString("email");
                     String passwordDB = rs.getString("password");
+                    String name = rs.getString("name");
+                    String image = rs.getString("image");
                     Integer id = rs.getInt("id");
 
                     if (passwordDB.equals(password)) {
                         System.out.println("Passwords match, logging in");
-                        return new LoginResponse(email, password, id);
+                        return new LoginResponse(email, password, name, image, id);
                     } else {
                         throw new Exception("Passwords do not match, cannot log in");
                     }
@@ -60,7 +62,7 @@ public class UserRepository {
             }
         }
     }
-    public static record LoginResponse(String email, String password, Integer id) {
+    public static record LoginResponse(String email, String password, String name, String image ,Integer id) {
     }
 
 }
