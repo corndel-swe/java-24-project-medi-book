@@ -1,15 +1,16 @@
 -- Seed initial data for users
-INSERT INTO users (name, email, image) VALUES
-('Alice Johnson', 'alice.johnson@example.com', 'alice.jpg'),
-('Bob Smith', 'bob.smith@example.com', 'bob.jpg'),
-('Charlie Brown', 'charlie.brown@example.com', 'charlie.jpg'),
-('Diana Prince', 'diana.prince@example.com', 'diana.jpg'),
-('Ethan Hunt', 'ethan.hunt@example.com', 'ethan.jpg'),
-('Fiona Gallagher', 'fiona.gallagher@example.com', 'fiona.jpg'),
-('George Orwell', 'george.orwell@example.com', 'george.jpg'),
-('Hannah Montana', 'hannah.montana@example.com', 'hannah.jpg'),
-('Ian Malcolm', 'ian.malcolm@example.com', 'ian.jpg'),
-('Julia Roberts', 'julia.roberts@example.com', 'julia.jpg');
+INSERT INTO users (name, email, password, image) VALUES
+('Alice Johnson', 'alice.johnson@example.com', 'password1', 'alice.jpg'),
+('Bob Smith', 'bob.smith@example.com', 'password1', 'bob.jpg'),
+('Charlie Brown', 'charlie.brown@example.com', 'password1', 'charlie.jpg'),
+('Diana Prince', 'diana.prince@example.com', 'password1', 'diana.jpg'),
+('Ethan Hunt', 'ethan.hunt@example.com', 'password1', 'ethan.jpg'),
+('Fiona Gallagher', 'fiona.gallagher@example.com', 'password1', 'fiona.jpg'),
+('George Orwell', 'george.orwell@example.com', 'password1', 'george.jpg'),
+('Hannah Montana', 'hannah.montana@example.com', 'password1', 'hannah.jpg'),
+('Ian Malcolm', 'ian.malcolm@example.com', 'password1', 'ian.jpg'),
+('Julia Roberts', 'julia.roberts@example.com', 'password1', 'julia.jpg');
+
 
 -- Seed initial data for doctors
 INSERT INTO doctors (name, speciality, image, biography) VALUES
