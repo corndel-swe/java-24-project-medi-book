@@ -19,6 +19,8 @@ public class UserController {
             throw new RuntimeException(e);
         }
     }
+
+    //METHOD TO LOG IN User
     public static void userLogIn(Context ctx) {
         try {
             String email = ctx.formParam("email");
