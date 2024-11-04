@@ -20,7 +20,7 @@ public class UserController {
         }
     }
 
-    //METHOD TO LOG IN
+    //METHOD TO LOG IN User
     public static void userLogIn(Context ctx) {
         try {
             String email = ctx.formParam("email");
