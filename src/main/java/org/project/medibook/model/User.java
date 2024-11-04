@@ -1,21 +1,32 @@
 package org.project.medibook.model;
 
-public class DoctorModel {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class User {
+
     private int id;
     private String name;
-    private String speciality;
+    private String email;
     private String profile_picture;
-    private String biography;
 
-    public DoctorModel() {
+    public User() {
     }
 
-    public DoctorModel(int id, String name, String speciality, String profile_picture, String biography) {
+    public User(int id, String name, String email, String profile_picture) {
         this.id = id;
         this.name = name;
-        this.speciality = speciality;
+        this.email = email;
         this.profile_picture = profile_picture;
-        this.biography = biography;
+    }
+
+    public static User of(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setId(rs.getInt("id"));
+        user.setName(rs.getString("name"));
+        user.setEmail(rs.getString("email"));
+        user.setProfile_picture(rs.getString("image"));
+        return user;
     }
 
     public int getId() {
@@ -34,12 +45,12 @@ public class DoctorModel {
         this.name = name;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getProfile_picture() {
@@ -50,22 +61,13 @@ public class DoctorModel {
         this.profile_picture = profile_picture;
     }
 
-    public String getBiography() {
-        return biography;
-    }
-
-    public void setBiography(String biography) {
-        this.biography = biography;
-    }
-
     @Override
     public String toString() {
-        return "DoctorModel{" +
+        return "AppointmentModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", speciality='" + speciality + '\'' +
+                ", email='" + email + '\'' +
                 ", profile_picture='" + profile_picture + '\'' +
-                ", biography='" + biography + '\'' +
                 '}';
     }
 }
