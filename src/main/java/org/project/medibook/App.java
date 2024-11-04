@@ -49,9 +49,17 @@ public class App {
 
     app.get("/dashboard", AppointmentController::renderDashboard);
     app.get("/appointment-history", AppointmentController::renderAppointmentHistory);
+    app.get("/appointments/dates", AppointmentController::getAvailableDates);
+    app.get("/appointments/times", AppointmentController::getAvailableTimes);
+    app.get("/appointments/book", AppointmentController::renderBookingPage);
+    app.post("/appointments/book", AppointmentController::bookAppointment);
 
 
-    // DOCTOR ENDPOINTS
+
+
+
+        // DOCTOR ENDPOINTS
+        app.get("/doctors/list", DoctorController::getAllDoctorsJson);
         app.get("/doctors", DoctorController::renderDoctors);
         app.get("/doctor/{id}", DoctorController::renderDoctor);
 
