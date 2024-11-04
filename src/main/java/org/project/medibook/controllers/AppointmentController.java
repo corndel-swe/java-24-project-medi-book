@@ -10,13 +10,15 @@ import java.util.Map;
 
 public class AppointmentController {
   public static void renderDashboard(Context ctx) throws SQLException {
-    int userId = ctx.sessionAttribute("userId");
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
     List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(userId);
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
 
   public static void renderAppointmentHistory(Context ctx) throws SQLException {
-    int userId = ctx.sessionAttribute("userId");
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
     List<Appointment> appointments = AppointmentRepository.findPastAppointmentsByUserId(userId);
     ctx.render("past_appointments", Map.of("appointments", appointments));
   }
