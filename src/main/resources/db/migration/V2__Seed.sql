@@ -32,4 +32,3 @@ INSERT INTO appointments (user_id, doctor_id, start_time, date, comment) VALUES
 (7, 5, '13:00:00', '2024-11-07', 'Psychiatry session for stress management.'),
 (8, 6, '16:00:00', '2024-11-08', 'Neurology check for migraine treatment.'),
 (9, 2, '09:00:00', '2024-11-09', 'Skin consultation for allergy review.');
-(1, 2, '09:00:00', '2024-11-09', 'Skin consultation for allergy review.');
