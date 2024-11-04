@@ -51,6 +51,7 @@ public class App {
 
     // DOCTOR ENDPOINTS
         app.get("/doctors", DoctorController::renderDoctors);
+        app.get("/doctor/{id}", DoctorController::renderDoctor);
 
 
 

@@ -9,13 +9,14 @@
 <h1 class="doctor-title">Our Doctors</h1>
 
 <div class="doctors-container">
-    <div th:each="doctor : ${doctors}" class="doctor-box">
-        <img th:src="${doctor.profile_picture}" alt="Doctor Image" class="doctor-image">
-        <h3 th:text="${doctor.name}">Doctor Name</h3>
-        <h2 th:text="${doctor.speciality}">Doctor Name</h2>
-        <p th:text="${doctor.biography}">Doctor Description</p>
+    <div th:each="doctor : ${doctors}">
+        <a th:href="@{/doctor/{id}(id=${doctor.id})}" class="doctor-box">
+            <img th:src="${doctor.profile_picture}" alt="Doctor Image" class="doctor-image">
+            <h3 th:text="${doctor.name}">Doctor Name</h3>
+            <h2 th:text="${doctor.speciality}">Speciality</h2>
+            <p th:text="${doctor.biography}">Doctor Description</p>
+        </a>
     </div>
 </div>
 
 </body>
-</html>

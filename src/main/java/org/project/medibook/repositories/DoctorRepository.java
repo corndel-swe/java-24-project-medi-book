@@ -34,4 +34,34 @@ public class DoctorRepository {
             return users;
         }
     }
+    public static Doctor getDoctor(int id) throws SQLException {
+        var query = "SELECT * FROM doctors WHERE id = ?";
+
+        try (var con = DB.getConnection();
+             var stmt = con.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+
+            try (var rs = stmt.executeQuery()) {
+                if (!rs.next()) {
+                    return null;
+                }
+
+                var name = rs.getString("name");
+                var speciality = rs.getString("speciality");
+                var image = rs.getString("image");
+                var biography = rs.getString("biography");
+
+                System.out.println(id);
+                System.out.println(image);
+                System.out.println(name);
+                System.out.println(biography);
+                System.out.println(speciality);
+
+                return new Doctor(id, name, speciality, image, biography);
+            }
+        }
+    }
+
+
 }
