@@ -34,8 +34,6 @@ public class App {
         ctx.result("Hello, World!");
     });
 
-    app.get("/doctors", DoctorController::renderDoctors);
-
 
     // USER ENDPOINTS
 
@@ -52,7 +50,7 @@ public class App {
 
 
     // DOCTOR ENDPOINTS
-
+        app.get("/doctors", DoctorController::renderDoctors);
 
 
 
