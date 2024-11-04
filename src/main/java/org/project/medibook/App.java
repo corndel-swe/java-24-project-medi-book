@@ -34,6 +34,27 @@ public class App {
     });
 
 
+    // USER ENDPOINTS
+
+
+
+
+
+
+    // APPOINTMENT ENDPOINTS
+
+
+
+
+
+
+    // DOCTOR ENDPOINTS
+
+
+
+
+
+
 
         return app;
     }
