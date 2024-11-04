@@ -1,11 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
 </head>
 <body>
-
+    <h1>Dashboard</h1>
+<section id="upcoming-appointments">
+    <h2>Upcoming appointments</h2>
+    <ul>
+        <li th:each="appointment : ${appointments}">
+            <p><b th:text="${appointment.start_time} + ' ' + ${appointment.date}"></b></p>
+            <p th:text="${appointment.doctor_id}"></p>
+        </li>
+    </ul>
+</section>
 </body>
 </html>

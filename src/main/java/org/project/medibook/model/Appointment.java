@@ -30,8 +30,8 @@ public class Appointment {
       appointment.setId(rs.getInt("id"));
       appointment.setUser_id(rs.getInt("user_id"));
       appointment.setDoctor_id(rs.getInt("doctor_id"));
-      appointment.setStart_time(rs.getTime("start_time").toLocalTime());
-      appointment.setDate(rs.getDate("date").toLocalDate());
+      appointment.setStart_time(LocalTime.parse(rs.getString("start_time")));
+      appointment.setDate(LocalDate.parse(rs.getString("date")));
       appointment.setComment(rs.getString("comment"));
       return appointment;
     }
