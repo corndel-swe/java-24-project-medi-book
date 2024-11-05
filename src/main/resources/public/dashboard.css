@@ -1,13 +1,11 @@
 body {
     display: grid;
     min-height: 100vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto auto;
     gap: 1rem;
 }
 
 h1 {
-    grid-column: 1 / span 2;
     grid-row: 1 / 2;
     border: 1px solid red;
     font-size: 2.5rem;
@@ -18,7 +16,6 @@ h2 {
 }
 
 section {
-    grid-row: 2 / 3;
     border: 1px solid green;
     display: flex;
     flex-direction: column;
@@ -26,6 +23,7 @@ section {
 }
 
 #upcoming-appointments {
+    grid-row: 3 / 4;
     justify-contents: flex-start;
     gap: 1.5rem;
 }
@@ -41,12 +39,16 @@ article > * {
 }
 
 #links {
-    justify-content: space-evenly;
+    grid-row: 2 / 3;
+    padding: 2.5rem;
+    gap: 2.5rem;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 #links a {
     border: 1px solid purple;
     padding: 1.5rem;
     width: fit-content;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }

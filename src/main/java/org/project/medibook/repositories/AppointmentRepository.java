@@ -49,6 +49,21 @@ public class AppointmentRepository {
     return appointments;
   }
 
+  public static void deleteUpcomingAppointment(int appointmentId) throws SQLException, Exception {
+    String query = "DELETE FROM appointments WHERE id = ?";
+
+    try (var con = DB.getConnection();
+         var stmt = con.prepareStatement(query)) {
+      stmt.setInt(1, appointmentId);
+
+      int rowsAffected = stmt.executeUpdate();
+
+      if (rowsAffected == 0) {
+        throw new Exception("Appointment not found.");
+      }
+    }
+  }
+
   public List<String> getAvailableDatesForDoctor(int doctorId) {
     List<String> availableDates = new ArrayList<>();
     LocalDate today = LocalDate.now();
@@ -101,7 +116,6 @@ public class AppointmentRepository {
     }
     return bookedTimes;
   }
-
 
 
   public void saveAppointment(Appointment appointment) throws SQLException {

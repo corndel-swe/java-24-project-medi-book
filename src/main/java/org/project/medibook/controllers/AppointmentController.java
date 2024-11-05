@@ -42,7 +42,7 @@ public class AppointmentController {
       Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
 
       if (appointment != null) {
-        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor",doctor));
+        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor));
       } else {
         ctx.status(404).result("Appointment not found");
       }
@@ -50,7 +50,6 @@ public class AppointmentController {
       ctx.status(400).result("Invalid Appointment ID");
     }
   }
-
 
 
   public static void getAvailableDates(Context ctx) {
@@ -65,7 +64,7 @@ public class AppointmentController {
 
     // Define all possible time slots for a day
     List<String> allTimeSlots = Arrays.asList("09:00", "10:00", "11:00", "12:00",
-            "13:00", "14:00", "15:00", "16:00");
+        "13:00", "14:00", "15:00", "16:00");
 
     // Fetch booked times for the selected doctor and date
     List<String> bookedTimes = appointmentRepository.getBookedTimesForDoctorAndDate(doctorId, selectedDate);
@@ -103,6 +102,18 @@ public class AppointmentController {
 
     appointmentRepository.saveAppointment(appointment);
     ctx.status(200).json(Map.of("message", "Appointment booked successfully"));
+  }
+
+  public static void removeAppointment(Context ctx) throws SQLException {
+    int appointmentId = Integer.parseInt(ctx.pathParam("id"));
+    try {
+      AppointmentRepository.deleteUpcomingAppointment(appointmentId);
+      ctx.status(204).redirect("/dashboard");
+    } catch (Exception e) {
+      if (e.getMessage().equals("Appointment not found.")) {
+        ctx.status(404).result("Appointment not found.");
+      }
+    }
   }
 
 }
