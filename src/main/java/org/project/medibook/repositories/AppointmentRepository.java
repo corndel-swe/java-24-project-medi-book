@@ -12,7 +12,7 @@ public class AppointmentRepository {
 
   // Method to find upcoming appointments by user ID
   public static List<Appointment> findUpcomingAppointmentsByUserId(int user_id) throws SQLException {
-    String query = "SELECT * FROM appointments WHERE user_id = ? AND (date > CURRENT_DATE OR (date = CURRENT_DATE AND start_time > CURRENT_TIME));";
+    String query = "SELECT * FROM appointments INNER JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND (appointments.date > CURRENT_DATE OR (appointments.date = CURRENT_DATE AND appointments.start_time > CURRENT_TIME));";
 
     List<Appointment> appointments = new ArrayList<>();
 
@@ -29,9 +29,8 @@ public class AppointmentRepository {
     return appointments;
   }
 
-  // Method to find past appointments by user ID
   public static List<Appointment> findPastAppointmentsByUserId(int user_id) throws SQLException {
-    String query = "SELECT * FROM appointments WHERE user_id = ? AND (date < CURRENT_DATE OR (date = CURRENT_DATE AND start_time < CURRENT_TIME));";
+    String query = "SELECT * FROM appointments INNER JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND (appointments.date < CURRENT_DATE OR (appointments.date = CURRENT_DATE AND appointments.start_time < CURRENT_TIME));";
 
     List<Appointment> appointments = new ArrayList<>();
 

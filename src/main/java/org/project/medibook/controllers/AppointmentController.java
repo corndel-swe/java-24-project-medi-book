@@ -21,14 +21,16 @@ public class AppointmentController {
 
   // Static method to render the dashboard
   public static void renderDashboard(Context ctx) throws SQLException {
-    int userId = ctx.sessionAttribute("userId");
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
     List<Appointment> appointments = appointmentRepository.findUpcomingAppointmentsByUserId(userId);
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
 
   // Static method to render appointment history
   public static void renderAppointmentHistory(Context ctx) throws SQLException {
-    int userId = ctx.sessionAttribute("userId");
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
     List<Appointment> appointments = appointmentRepository.findPastAppointmentsByUserId(userId);
     ctx.render("past_appointments", Map.of("appointments", appointments));
   }
@@ -66,7 +68,8 @@ public class AppointmentController {
 
   // Handles appointment booking
   public static void bookAppointment(Context ctx) throws SQLException {
-    int userId = 1; // Change this to dynamic retrieval later
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
 
     int doctorId = Integer.parseInt(ctx.formParam("doctor_id"));
     String date = ctx.formParam("date");

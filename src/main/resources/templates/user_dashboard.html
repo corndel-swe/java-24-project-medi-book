@@ -12,14 +12,14 @@
     <h2>Upcoming appointments</h2>
     <article th:each="appointment : ${appointments}">
       <a th:href="'/appointment/' + ${appointment.id}">
-        <p><b th:text="${appointment.start_time} + ' ' + ${appointment.date}"></b></p>
-        <p th:text="${appointment.doctor_id}"></p>
+        <p><b th:text="${appointment.display_date} + ' at ' + ${appointment.start_time}"></b></p>
+        <p th:text="${appointment.doctor_name}"></p>
       </a>
     </article>
   </section>
   <section id="links">
     <a href="/doctors">Doctors</a>
-    <a href="/booking">Book an appointment</a>
+    <a href="/appointments/book">Book an appointment</a>
     <a href="/appointment-history">Past appointments</a>
   </section>
 </body>

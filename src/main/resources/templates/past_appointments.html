@@ -9,8 +9,8 @@
   <h1>Past Appointments</h1>
   <article th:each="appointment : ${appointments}">
     <a th:href="'/appointment/' + ${appointment.id}">
-      <p><b th:text="${appointment.start_time} + ' ' + ${appointment.date}"></b></p>
-      <p th:text="${appointment.doctor_id}"></p>
+      <p><b th:text="${appointment.display_date} + ' at ' + ${appointment.start_time}"></b></p>
+      <p th:text="${appointment.doctor_name}"></p>
     </a>
   </article>
 </body>
