@@ -52,12 +52,6 @@ public class DoctorRepository {
                 var image = rs.getString("image");
                 var biography = rs.getString("biography");
 
-                System.out.println(id);
-                System.out.println(image);
-                System.out.println(name);
-                System.out.println(biography);
-                System.out.println(speciality);
-
                 return new Doctor(id, name, speciality, image, biography);
             }
         }
