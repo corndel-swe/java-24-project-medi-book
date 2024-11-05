@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Medibook</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
+<h1>MediBook</h1>
 <form action="/submit" method="POST">
 
     <label for="email">Email:</label>
@@ -16,6 +20,10 @@
 
     <button type="submit">Log In</button>
 </form>
-
+<div th:if="${session.errorMessage}">
+    <script th:inline="javascript">
+        alert("Account doesn’t exist");
+    </script>
+</div>
 </body>
 </html>
