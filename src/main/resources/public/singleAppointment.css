@@ -1,0 +1,72 @@
+/* Body and Title Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.appointment-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2em;
+}
+
+/* Container for the appointment box */
+.appointment-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 100px);
+}
+
+/* Individual appointment box */
+.appointment-box {
+    width: 80%;
+    max-width: 800px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Details container using Flexbox */
+.details-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Text details */
+.text-details {
+    flex: 1; /* Allow this to take available space */
+    padding-right: 20px; /* Space between text and image */
+}
+
+/* Doctor image container */
+.doctor-image-container {
+    flex-shrink: 0; /* Prevent shrinking of the image container */
+    text-align: center; /* Center the caption */
+}
+
+/* Doctor image */
+.doctor-image {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Doctor name and specialty */
+.appointment-box h2, .appointment-box h3 {
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Doctor biography */
+.appointment-box p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}

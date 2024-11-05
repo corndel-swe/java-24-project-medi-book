@@ -43,6 +43,7 @@ public class App {
         app.get("/appointments/times", AppointmentController::getAvailableTimes);
         app.get("/appointments/book", AppointmentController::renderBookingPage);
         app.post("/appointments/book", AppointmentController::bookAppointment);
+        app.get("/appointment/{id}", AppointmentController::renderSingleAppointment);
 
         // DOCTOR ENDPOINTS
         app.get("/doctors/list", DoctorController::getAllDoctorsJson);
