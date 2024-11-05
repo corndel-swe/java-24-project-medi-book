@@ -49,13 +49,13 @@ public class AppointmentRepository {
 
   public List<String> getAvailableDatesForDoctor(int doctorId) {
     List<String> availableDates = new ArrayList<>();
-    LocalDate today = LocalDate.now();
-    LocalDate twoWeeksFromNow = today.plusWeeks(2);
-
-    // Populate the list with the next two weeks of dates
-    for (LocalDate date = today; !date.isAfter(twoWeeksFromNow); date = date.plusDays(1)) {
-      availableDates.add(date.toString()); // Convert to "YYYY-MM-DD" format
-    }
+//    LocalDate today = LocalDate.now();
+//    LocalDate twoWeeksFromNow = today.plusWeeks(2);
+//
+//    // Populate the list with the next two weeks of dates
+//    for (LocalDate date = today; !date.isAfter(twoWeeksFromNow); date = date.plusDays(1)) {
+//      availableDates.add(date.toString()); // Convert to "YYYY-MM-DD" format
+//    }
 
     // Now we fetch booked dates for the doctor
     List<String> bookedDates = new ArrayList<>();
@@ -64,8 +64,8 @@ public class AppointmentRepository {
     try (var con = DB.getConnection();
          var stmt = con.prepareStatement(query)) {
       stmt.setInt(1, doctorId);
-      stmt.setDate(2, java.sql.Date.valueOf(today));
-      stmt.setDate(3, java.sql.Date.valueOf(twoWeeksFromNow));
+//      stmt.setDate(2, java.sql.Date.valueOf(today));
+//      stmt.setDate(3, java.sql.Date.valueOf(twoWeeksFromNow));
 
       try (var rs = stmt.executeQuery()) {
         while (rs.next()) {
