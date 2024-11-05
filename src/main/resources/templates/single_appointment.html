@@ -23,15 +23,34 @@
                     <p>Speciality: <span th:text="${doctor.speciality}"></span></p>
                     <h3>Biography</h3>
                     <p><span th:text="${doctor.biography}"></span></p>
+<!--                    <button onclick="deleteAppointment()">Delete appointment</button>-->
+                    <form th:action="@{/appointment/{appointmentId}(appointmentId=${appointment.id})}" th:method="post">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button type="submit">Cancel Appointment</button>
+                    </form>
                 </div>
                 <figure class="doctor-image-container">
-                    <img th:src="'/' + ${doctor.profile_picture}" alt="Profile image of [Doctor's Name]" class="doctor-image">
+                    <img th:src="'/' + ${doctor.profile_picture}" th:alt="'Profile image of ' + ${doctor.name}" class="doctor-image">
                     <figcaption><span th:text="${doctor.name}"></span></figcaption>
                 </figure>
             </div>
         </article>
     </section>
 </main>
+<!--    <script>-->
+<!--        function deleteAppointment(appointmentId) {-->
+<!--            console.log("method invoked");-->
+<!--            fetch(`/appointment/${appointmentId}`, {-->
+<!--                method: 'DELETE'-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (!res.ok) {-->
+<!--                    alert(response.text() + ' Failed to delete appointment.')-->
+<!--                }-->
+<!--                window.location.href = '/dashboard'-->
+<!--            })-->
+<!--        }-->
+<!--    </script>-->
 </body>
 </html>
 

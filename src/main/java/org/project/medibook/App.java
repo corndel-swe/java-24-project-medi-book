@@ -44,6 +44,12 @@ public class App {
         app.get("/appointments/book", AppointmentController::renderBookingPage);
         app.post("/appointments/book", AppointmentController::bookAppointment);
         app.get("/appointment/{id}", AppointmentController::renderSingleAppointment);
+        app.post("/appointment/{id}", ctx -> {
+            // custom logic to override POST method with DELETE request
+            if ("DELETE".equals(ctx.formParam("_method"))) {
+                AppointmentController.removeAppointment(ctx);
+            }
+        });
 
         // DOCTOR ENDPOINTS
         app.get("/doctors/list", DoctorController::getAllDoctorsJson);
