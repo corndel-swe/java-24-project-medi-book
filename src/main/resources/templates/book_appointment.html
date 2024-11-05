@@ -53,20 +53,20 @@
 
         // Fetch and populate doctors dropdown
         $.ajax({
-            url: '/doctors/list', // Call to the JSON endpoint for doctors
+            url: '/doctors/list',
             method: 'GET',
             beforeSend: function() {
-                $('#loading').show(); // Show loading indicator
+                $('#loading').show();
             },
             success: function(data) {
-                $('#loading').hide(); // Hide loading indicator
+                $('#loading').hide();
                 data.forEach(function(doctor) {
                     $('#doctor_id').append(new Option(doctor.name, doctor.id)); // Populate dropdown
                 });
             },
             error: function(xhr, status, error) {
-                $('#loading').hide(); // Hide loading indicator
-                console.error('Error fetching doctors:', error); // Log error
+                $('#loading').hide();
+                console.error('Error fetching doctors:', error);
                 alert('Error fetching doctors');
             }
         });
@@ -90,17 +90,17 @@
                 url: `/appointments/times?doctor_id=${doctorId}&date=${selectedDate}`,
                 method: 'GET',
                 beforeSend: function() {
-                    $('#loading').show(); // Show loading indicator
+                    $('#loading').show();
                 },
                 success: function(times) {
-                    $('#loading').hide(); // Hide loading indicator
-                    $('#time_slots').empty().prop('disabled', false); // Clear previous times and enable dropdown
+                    $('#loading').hide();
+                    $('#time_slots').empty().prop('disabled', false);
 
                     if (times.length === 0) {
                         $('#time_slots').append(new Option('No available times.', '', true, true)).prop('disabled', true);
                         $('#bookAppointment').prop('disabled', true); // Disable book button
                     } else {
-                        $('#time_slots').append(new Option('Select a time', '', true, true)); // Add default option
+                        $('#time_slots').append(new Option('Select a time', '', true, true));
                         times.forEach(function(time) {
                             $('#time_slots').append(new Option(time, time)); // Populate with available times
                         });
@@ -108,8 +108,8 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                    $('#loading').hide(); // Hide loading indicator
-                    console.error('Error fetching available times:', error); // Log error
+                    $('#loading').hide();
+                    console.error('Error fetching available times:', error);
                     alert('Error fetching available times');
                 }
             });
@@ -119,16 +119,16 @@
         $('#time_slots').on('change', function() {
             const selectedTime = $(this).val();
             if (selectedTime) {
-                $('#bookAppointment').prop('disabled', false); // Enable button if a time is selected
+                $('#bookAppointment').prop('disabled', false);
             } else {
-                $('#bookAppointment').prop('disabled', true); // Disable button if no time is selected
+                $('#bookAppointment').prop('disabled', true);
             }
         });
 
 
             // Perform AJAX request to book the appointment
                 $('#appointmentForm').on('submit', function(event) {
-                    event.preventDefault(); // Prevent default form submission
+                    event.preventDefault();
 
                     const doctorId = $('#doctor_id').val();
                     const selectedDate = $('#date').val();
@@ -137,27 +137,25 @@
 
                     // Perform AJAX request to book the appointment
                     $.ajax({
-                        url: '/appointments/book', // Endpoint to handle booking
+                        url: '/appointments/book',
                         method: 'POST',
                         data: {
                             doctor_id: doctorId,
                             date: selectedDate,
                             time: selectedTime,
-                            comment: comment // Include comment in the data sent to the server
+                            comment: comment
                         },
                         success: function(response) {
-                            alert('Appointment booked successfully!'); // Notify user of success
+                            alert('Appointment booked successfully!');
 
                             // Clear and reset form fields
-                            $('#appointmentForm')[0].reset(); // Reset the form to clear inputs
-                            $('#time_slots').empty().prop('disabled', true); // Clear and disable time slots dropdown
-                            $('#bookAppointment').prop('disabled', true); // Disable book button
+                            $('#appointmentForm')[0].reset();
+                            $('#time_slots').empty().prop('disabled', true);
+                            $('#bookAppointment').prop('disabled', true);
 
-                            // Fetch available times again for the selected doctor and date
-                            fetchAvailableTimes(doctorId, selectedDate); // Re-fetch available times
-
-                            // Redirect to the dashboard after a short delay to allow for success message to be read
-                            window.location.href = '/dashboard'; // Redirect to the dashboard
+                            // Re-fetch available times
+                            fetchAvailableTimes(doctorId, selectedDate);
+                            window.location.href = '/dashboard';
                         },
                         error: function() {
                             alert('Error booking the appointment. Please try again.');
