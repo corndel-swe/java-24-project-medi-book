@@ -10,9 +10,13 @@ import java.util.Map;
 public class DoctorController {
 
     public static void renderDoctors(Context ctx) throws SQLException {
-
         List<Doctor> doctors = DoctorRepository.getAllDoctors();
         ctx.render("doctor_profiles.html", Map.of("doctors", doctors));
+    }
+
+    public static void getAllDoctorsJson(Context ctx) throws SQLException {
+        List<Doctor> doctors = DoctorRepository.getAllDoctors();
+        ctx.json(doctors); // Return the list of doctors as JSON
     }
 
     public static void renderDoctor(Context ctx) throws SQLException {
