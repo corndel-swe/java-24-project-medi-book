@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Appointment</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/booking.css">
 </head>
 <body>
 
 <h1>Book an Appointment</h1>
-
-<!-- Dropdown for selecting a doctor -->
 <form id="appointmentForm">
     <label for="doctor_id">Doctor:</label>
     <select id="doctor_id" name="doctor_id" required>
         <option value="" disabled selected>Select a doctor</option>
-        <!-- Options will be populated here dynamically -->
+        <!-- Options will be populated here from code below -->
     </select>
 
     <label for="date">Select Date:</label>
@@ -25,11 +24,11 @@
     <label for="time_slots">Select Time:</label>
     <select id="time_slots" name="time_slots" disabled>
         <option value="" disabled selected>Select a time</option>
-        <!-- Options will be populated here dynamically -->
+        <!-- Options will be populated here from code below  -->
     </select>
 
     <label for="comment">Comment:</label>
-    <textarea id="comment" name="comment" placeholder="Optional comment..."></textarea>
+    <textarea id="comment" name="comment" required placeholder="Comment..."></textarea>
 
     <button type="submit" id="bookAppointment" disabled>Book Appointment</button>
 </form>
@@ -37,7 +36,6 @@
 <!-- Loading indicator -->
 <div id="loading" style="display:none;">Loading...</div>
 
-<!-- Link to view all doctors -->
 <p>
     <a href="/doctors">View All Doctors</a>
 </p>
@@ -45,8 +43,13 @@
 <script>
     $(document).ready(function() {
         // Set the minimum date to today to prevent past appointments
-        const today = new Date().toISOString().split('T')[0];
-        $('#date').attr('min', today);
+        const today = new Date();
+        $('#date').attr('min', today.toISOString().split('T')[0]);
+
+        // Set the maximum date to two weeks from today
+        const twoWeeksFromNow = new Date();
+        twoWeeksFromNow.setDate(today.getDate() + 14);
+        $('#date').attr('max', twoWeeksFromNow.toISOString().split('T')[0]);
 
         // Fetch and populate doctors dropdown
         $.ajax({
@@ -122,44 +125,46 @@
             }
         });
 
-        // Handle booking appointment
-        $('#appointmentForm').on('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const doctorId = $('#doctor_id').val();
-            const selectedDate = $('#date').val();
-            const selectedTime = $('#time_slots').val();
-            const comment = $('#comment').val();
 
             // Perform AJAX request to book the appointment
-            $.ajax({
-                url: '/appointments/book', // Endpoint to handle booking
-                method: 'POST',
-                data: {
-                    doctor_id: doctorId,
-                    date: selectedDate,
-                    time: selectedTime,
-                    comment: comment // Include comment in the data sent to the server
-                },
-                success: function(response) {
-                    alert('Appointment booked successfully!'); // Notify user of success
+                $('#appointmentForm').on('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
 
-                    // Clear and reset form fields
-                    $('#appointmentForm')[0].reset(); // Reset the form to clear inputs
-                    $('#time_slots').empty().prop('disabled', true); // Clear and disable time slots dropdown
-                    $('#bookAppointment').prop('disabled', true); // Disable book button
+                    const doctorId = $('#doctor_id').val();
+                    const selectedDate = $('#date').val();
+                    const selectedTime = $('#time_slots').val();
+                    const comment = $('#comment').val();
 
-                    // Trigger change event on doctor and date fields to re-fetch and filter available times
-                    $('#doctor_id').trigger('change');
-                    $('#date').trigger('change');
-                },
-                error: function() {
-                    alert('Error booking the appointment. Please try again.');
-                }
+                    // Perform AJAX request to book the appointment
+                    $.ajax({
+                        url: '/appointments/book', // Endpoint to handle booking
+                        method: 'POST',
+                        data: {
+                            doctor_id: doctorId,
+                            date: selectedDate,
+                            time: selectedTime,
+                            comment: comment // Include comment in the data sent to the server
+                        },
+                        success: function(response) {
+                            alert('Appointment booked successfully!'); // Notify user of success
+
+                            // Clear and reset form fields
+                            $('#appointmentForm')[0].reset(); // Reset the form to clear inputs
+                            $('#time_slots').empty().prop('disabled', true); // Clear and disable time slots dropdown
+                            $('#bookAppointment').prop('disabled', true); // Disable book button
+
+                            // Fetch available times again for the selected doctor and date
+                            fetchAvailableTimes(doctorId, selectedDate); // Re-fetch available times
+
+                            // Redirect to the dashboard after a short delay to allow for success message to be read
+                            window.location.href = '/dashboard'; // Redirect to the dashboard
+                        },
+                        error: function() {
+                            alert('Error booking the appointment. Please try again.');
+                        }
+                    });
+                });
             });
-        });
-    });
-
 </script>
 
 </body>

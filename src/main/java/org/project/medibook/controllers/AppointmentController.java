@@ -16,10 +16,8 @@ import java.util.Map;
 
 public class AppointmentController {
 
-  // Static instance of AppointmentRepository
   private static final AppointmentRepository appointmentRepository = new AppointmentRepository();
 
-  // Static method to render the dashboard
   public static void renderDashboard(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
@@ -27,7 +25,7 @@ public class AppointmentController {
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
 
-  // Static method to render appointment history
+
   public static void renderAppointmentHistory(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
@@ -37,7 +35,7 @@ public class AppointmentController {
 
   public static void getAvailableDates(Context ctx) {
     int doctorId = Integer.parseInt(ctx.queryParam("doctor_id"));
-    List<String> availableDates = appointmentRepository.getAvailableDatesForDoctor(doctorId); // Update to String
+    List<String> availableDates = appointmentRepository.getAvailableDatesForDoctor(doctorId);
     ctx.json(availableDates);
   }
 
@@ -46,8 +44,8 @@ public class AppointmentController {
     String selectedDate = ctx.queryParam("date");
 
     // Define all possible time slots for a day
-    List<String> allTimeSlots = Arrays.asList("09:00:00", "10:00:00", "11:00:00", "12:00:00",
-            "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00");
+    List<String> allTimeSlots = Arrays.asList("09:00", "10:00", "11:00", "12:00",
+            "13:00", "14:00", "15:00", "16:00");
 
     // Fetch booked times for the selected doctor and date
     List<String> bookedTimes = appointmentRepository.getBookedTimesForDoctorAndDate(doctorId, selectedDate);
@@ -66,7 +64,7 @@ public class AppointmentController {
     ctx.render("book_appointment.html", Map.of("doctors", doctors));
   }
 
-  // Handles appointment booking
+
   public static void bookAppointment(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
@@ -84,7 +82,7 @@ public class AppointmentController {
     appointment.setComment(comment);
 
     appointmentRepository.saveAppointment(appointment);
-    ctx.status(200).json(Map.of("message", "Appointment booked successfully")); // Send success response
+    ctx.status(200).json(Map.of("message", "Appointment booked successfully"));
   }
 
 }
