@@ -5,6 +5,8 @@ import org.project.medibook.model.Appointment;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,5 +118,34 @@ public class AppointmentRepository {
 
       stmt.executeUpdate();
     }
+  }
+
+  public static Appointment getSingleAppointment(int appointmentId) throws SQLException {
+    var query = """
+            SELECT id, doctor_id, user_id, start_time, date, comment
+            FROM appointments
+            WHERE id = ?
+            """;
+
+    try (var con = DB.getConnection();
+         var stmt = con.prepareStatement(query)) {
+
+      stmt.setInt(1, appointmentId);
+
+      try (var rs = stmt.executeQuery()) {
+        if (rs.next()) {
+
+          int id = rs.getInt("id");
+          int userId = rs.getInt("user_id");
+          int doctorId = rs.getInt("doctor_id");
+          LocalTime startTime = LocalTime.parse(rs.getString("start_time"));
+          LocalDate date = LocalDate.parse(rs.getString("date"));
+          String comment = rs.getString("comment");
+
+          return new Appointment(id, userId, doctorId, startTime, date, comment);
+        }
+      }
+    }
+    return null;
   }
 }

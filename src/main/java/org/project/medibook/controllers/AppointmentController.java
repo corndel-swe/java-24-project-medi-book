@@ -35,6 +35,26 @@ public class AppointmentController {
     ctx.render("past_appointments", Map.of("appointments", appointments));
   }
 
+  public static void renderSingleAppointment(Context ctx) throws SQLException {
+    try {
+      String idString = ctx.pathParam("id");
+      int id = Integer.parseInt(idString);
+
+      Appointment appointment = AppointmentRepository.getSingleAppointment(id);
+      Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
+
+      if (appointment != null) {
+        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor",doctor));
+      } else {
+        ctx.status(404).result("Appointment not found");
+      }
+    } catch (NumberFormatException e) {
+      ctx.status(400).result("Invalid Appointment ID");
+    }
+  }
+
+
+
   public static void getAvailableDates(Context ctx) {
     int doctorId = Integer.parseInt(ctx.queryParam("doctor_id"));
     List<String> availableDates = appointmentRepository.getAvailableDatesForDoctor(doctorId); // Update to String
