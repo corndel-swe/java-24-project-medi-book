@@ -8,16 +8,13 @@
 </head>
 <body>
 <div th:replace="~{navbar :: navbar}"></div>
-<h1 class="doctor-title"></h1>
-
-<div class="doctor-container">
+<main class="doctor-container">
     <div class="doctor-box">
         <img th:src="'/' + ${doctor.profile_picture}" alt="Doctor Image" class="doctor-image">
         <h3 th:text="${doctor.name}">Doctor Name</h3>
         <h2 th:text="${doctor.speciality}">Speciality</h2>
         <p th:text="${doctor.biography}">Doctor Description</p>
     </div>
-</div>
-
+</main>
 </body>
 </html>

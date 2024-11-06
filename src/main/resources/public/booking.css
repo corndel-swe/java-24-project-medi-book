@@ -8,6 +8,16 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.navbar-box {
+    grid-row: 1 / 2;
+}
+
+main {
+    grid-row: 2 / 3;
 }
 
 h1 {

@@ -6,42 +6,43 @@
     <title>Doctor Appointment</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/navbar.css">
     <link rel="stylesheet" href="/booking.css">
+    <link rel="stylesheet" href="/navbar.css">
 </head>
 <body>
 <div th:replace="~{navbar :: navbar}"></div>
-<h1>Book an Appointment</h1>
-<form id="appointmentForm">
-    <label for="doctor_id">Doctor:</label>
-    <select id="doctor_id" name="doctor_id" required>
-        <option value="" disabled selected>Select a doctor</option>
-        <!-- Options will be populated here from code below -->
-    </select>
+    <main>
+        <h1>Book an Appointment</h1>
+        <form id="appointmentForm">
+            <label for="doctor_id">Doctor:</label>
+            <select id="doctor_id" name="doctor_id" required>
+                <option value="" disabled selected>Select a doctor</option>
+                <!-- Options will be populated here from code below -->
+            </select>
 
-    <label for="date">Select Date:</label>
-    <input type="date" id="date" name="date" min="" required>
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" min="" required>
 
 
-    <label for="time_slots">Select Time:</label>
-    <select id="time_slots" name="time_slots" disabled>
-        <option value="" disabled selected>Select a time</option>
-        <!-- Options will be populated here from code below  -->
-    </select>
+            <label for="time_slots">Select Time:</label>
+            <select id="time_slots" name="time_slots" disabled>
+                <option value="" disabled selected>Select a time</option>
+                <!-- Options will be populated here from code below  -->
+            </select>
 
-    <label for="comment">Comment:</label>
-    <textarea id="comment" name="comment" required placeholder="Comment..."></textarea>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required placeholder="Comment..."></textarea>
 
-    <button type="submit" id="bookAppointment" disabled>Book Appointment</button>
-</form>
+            <button type="submit" id="bookAppointment" disabled>Book Appointment</button>
+        </form>
 
-<!-- Loading indicator -->
-<div id="loading" style="display:none;">Loading...</div>
+        <!-- Loading indicator -->
+        <div id="loading" style="display:none;">Loading...</div>
 
-<p>
-    <a href="/doctors">View All Doctors</a>
-</p>
-
+        <p>
+            <a href="/doctors">View All Doctors</a>
+        </p>
+    </main>
 <script>
     $(document).ready(function() {
         // Set the minimum date to today to prevent past appointments

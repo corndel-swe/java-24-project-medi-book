@@ -1,8 +1,16 @@
 /* Container for all doctor cards */
-body{
-/*    padding-top: 70px;*/
+body {
+    display: grid;
+    grid-template-rows: auto auto;
 }
 
+.navbar-box {
+    grid-row: 1 / 2;
+}
+
+main {
+    grid-row: 2 / 3;
+}
 
 .doctors-container {
     display: flex;
