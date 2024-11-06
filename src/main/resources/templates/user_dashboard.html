@@ -8,6 +8,16 @@
 </head>
 <body>
   <h1>Dashboard</h1>
+
+  <form th:action="@{/dashboard}" method="get">
+    <label for="sortOrder">Sort By Date: </label>
+    <select id="sortOrder" name="sortOrder">
+      <option value="asc" th:selected="${param.sortOrder == 'ASC'}">Ascending</option>
+      <option value="desc" th:selected="${param.sortOrder == 'DESC'}">Descending</option>
+    </select>
+    <button type="submit">Apply Sort</button>
+  </form>
+
   <section id="upcoming-appointments">
     <h2>Upcoming appointments</h2>
     <article th:each="appointment : ${appointments}">
@@ -22,5 +32,6 @@
     <a href="/appointments/book">Book an appointment</a>
     <a href="/appointment-history">Past appointments</a>
   </section>
+
 </body>
 </html>

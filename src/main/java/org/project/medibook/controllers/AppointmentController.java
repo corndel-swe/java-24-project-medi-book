@@ -21,9 +21,14 @@ public class AppointmentController {
   public static void renderDashboard(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
-    List<Appointment> appointments = appointmentRepository.findUpcomingAppointmentsByUserId(userId);
+    String sortOrder = ctx.queryParam("sortOrder");
+    if (sortOrder == null || (!sortOrder.equalsIgnoreCase("asc") && !sortOrder.equalsIgnoreCase("desc"))) {
+      sortOrder = "asc";
+    }
+    List<Appointment> appointments = AppointmentRepository.sortAppointments(userId, sortOrder);
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
+
 
 
   public static void renderAppointmentHistory(Context ctx) throws SQLException {
