@@ -21,8 +21,10 @@ public class AppointmentController {
   public static void renderDashboard(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
+    String userimage = (String) userAttributes.get("image");
+    String name = (String) userAttributes.get("name");
     List<Appointment> appointments = appointmentRepository.findUpcomingAppointmentsByUserId(userId);
-    ctx.render("user_dashboard", Map.of("appointments", appointments));
+    ctx.render("user_dashboard", Map.of("appointments", appointments, "userimage", userimage, "name", name));
   }
 
 
