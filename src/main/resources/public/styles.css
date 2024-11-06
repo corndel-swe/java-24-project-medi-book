@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Figtree;
+    src: url('./Figtree-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+    font-family: Figtree, sans-serif;
+}

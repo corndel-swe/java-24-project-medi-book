@@ -1,16 +1,7 @@
-@font-face {
-    font-family: Figtree;
-    src: url('./Figtree-VariableFont_wght.ttf') format('truetype');
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Figtree, sans-serif;
 }
 
 form {
@@ -23,7 +14,7 @@ form {
 }
 
 input, select, textarea, button {
-    font-family: Figtree, sans-serif;
+    font-family: inherit;
 }
 
 label {
