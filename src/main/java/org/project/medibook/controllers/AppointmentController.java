@@ -23,7 +23,11 @@ public class AppointmentController {
     int userId = (int) userAttributes.get("id");
     String userimage = (String) userAttributes.get("image");
     String name = (String) userAttributes.get("name");
-    List<Appointment> appointments = appointmentRepository.findUpcomingAppointmentsByUserId(userId);
+    String sortOrder = ctx.queryParam("sortOrder");
+    if (sortOrder == null) {
+      sortOrder = "asc";
+    }
+    List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(userId, sortOrder);
     ctx.render("user_dashboard", Map.of("appointments", appointments, "userimage", userimage, "name", name));
   }
 

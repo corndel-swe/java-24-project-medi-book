@@ -6,22 +6,20 @@ import org.project.medibook.model.Appointment;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AppointmentRepository {
 
   // Method to find upcoming appointments by user ID
-  public static List<Appointment> findUpcomingAppointmentsByUserId(int user_id) throws SQLException {
-    String query = "SELECT * FROM appointments INNER JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND (appointments.date > CURRENT_DATE OR (appointments.date = CURRENT_DATE AND appointments.start_time > CURRENT_TIME));";
+  public static List<Appointment> findUpcomingAppointmentsByUserId(int user_id, String sortOrder) throws SQLException {
+    String query = "SELECT * FROM appointments INNER JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND (appointments.date > CURRENT_DATE OR (appointments.date = CURRENT_DATE AND appointments.start_time > CURRENT_TIME)) ORDER BY appointments.date " + sortOrder + ", appointments.start_time ASC;";
 
     List<Appointment> appointments = new ArrayList<>();
 
     try (var con = DB.getConnection();
          var stmt = con.prepareStatement(query)) {
       stmt.setInt(1, user_id);
-
       try (var rs = stmt.executeQuery()) {
         while (rs.next()) {
           appointments.add(Appointment.of(rs));
@@ -30,6 +28,40 @@ public class AppointmentRepository {
     }
     return appointments;
   }
+
+//  public static List<Appointment> sortAppointments(int userId, String sortOrder) throws SQLException {
+//    String orderBy = "ASC";
+//    if ("desc".equalsIgnoreCase(sortOrder)) {
+//      orderBy = "DESC";
+//    }
+//
+//    String query = """
+//            SELECT appointments.*, doctors.name AS doctor_name
+//            FROM appointments
+//            INNER JOIN doctors ON appointments.doctor_id = doctors.id
+//            WHERE appointments.user_id = ?
+//              AND (appointments.date > CURRENT_DATE
+//              OR (appointments.date = CURRENT_DATE AND appointments.start_time > CURRENT_TIME))
+//            ORDER BY appointments.date """ + orderBy;
+//
+//    List<Appointment> appointments = new ArrayList<>();
+//
+//    try (var con = DB.getConnection();
+//         var stmt = con.prepareStatement(query)) {
+//      stmt.setInt(1, userId);
+//
+//      try (var rs = stmt.executeQuery()) {
+//        while (rs.next()) {
+//          appointments.add(Appointment.of(rs));
+//        }
+//      }
+//    } catch (SQLException e) {
+//      e.printStackTrace();
+//      throw new SQLException("Error retrieving upcoming appointments.", e);
+//    }
+//    return appointments;
+//  }
+
 
   public static List<Appointment> findPastAppointmentsByUserId(int user_id) throws SQLException {
     String query = "SELECT * FROM appointments INNER JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND (appointments.date < CURRENT_DATE OR (appointments.date = CURRENT_DATE AND appointments.start_time < CURRENT_TIME));";
