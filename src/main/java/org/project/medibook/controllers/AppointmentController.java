@@ -21,14 +21,15 @@ public class AppointmentController {
   public static void renderDashboard(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
+    String userimage = (String) userAttributes.get("image");
+    String name = (String) userAttributes.get("name");
     String sortOrder = ctx.queryParam("sortOrder");
-    if (sortOrder == null || (!sortOrder.equalsIgnoreCase("asc") && !sortOrder.equalsIgnoreCase("desc"))) {
+    if (sortOrder == null) {
       sortOrder = "asc";
     }
-    List<Appointment> appointments = AppointmentRepository.sortAppointments(userId, sortOrder);
-    ctx.render("user_dashboard", Map.of("appointments", appointments));
+    List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(userId, sortOrder);
+    ctx.render("user_dashboard", Map.of("appointments", appointments, "userimage", userimage, "name", name));
   }
-
 
 
   public static void renderAppointmentHistory(Context ctx) throws SQLException {

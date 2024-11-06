@@ -34,7 +34,9 @@ public class App {
 
         // USER ENDPOINTS
         app.get("/", UserController::getAll);
-        app.post("/submit", UserController::userLogIn);
+        app.post("/login", UserController::userLogIn);
+        app.get("/logout", UserController::userLogOut);
+
 
         // APPOINTMENT ENDPOINTS
         app.get("/dashboard", AppointmentController::renderDashboard);

@@ -1,0 +1,31 @@
+
+.navbar-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white
+    z-index: 1000;
+}
+
+
+.navbar-button {
+    margin-left: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 30px
+}
+
+.navbar-button:hover {
+    background-color: #0056b3;
+}
