@@ -24,8 +24,8 @@
                     <h3>Doctor Information</h3>
                     <p>Name: <span th:text="${doctor.name}"></span></p>
                     <p>Speciality: <span th:text="${doctor.speciality}"></span></p>
-                    <h3>Biography</h3>
-                    <p><span th:text="${doctor.biography}"></span></p>
+                    <h3>Contact:</h3>
+                    <p>Email: medibook@info.com</p>
 <!--                    <button onclick="deleteAppointment()">Delete appointment</button>-->
                     <form th:action="@{/appointment/{appointmentId}(appointmentId=${appointment.id})}" th:method="post">
                         <input type="hidden" name="_method" value="DELETE"/>
