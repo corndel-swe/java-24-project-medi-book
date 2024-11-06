@@ -22,10 +22,10 @@ public class AppointmentController {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
     String sortOrder = ctx.queryParam("sortOrder");
-    if (sortOrder == null || (!sortOrder.equalsIgnoreCase("asc") && !sortOrder.equalsIgnoreCase("desc"))) {
+    if (sortOrder == null) {
       sortOrder = "asc";
     }
-    List<Appointment> appointments = AppointmentRepository.sortAppointments(userId, sortOrder);
+    List<Appointment> appointments = AppointmentRepository.findUpcomingAppointmentsByUserId(userId, sortOrder);
     ctx.render("user_dashboard", Map.of("appointments", appointments));
   }
 

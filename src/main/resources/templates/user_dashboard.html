@@ -9,17 +9,9 @@
 <body>
   <h1>Dashboard</h1>
 
-  <form th:action="@{/dashboard}" method="get">
-    <label for="sortOrder">Sort By Date: </label>
-    <select id="sortOrder" name="sortOrder">
-      <option value="asc" th:selected="${param.sortOrder == 'ASC'}">Ascending</option>
-      <option value="desc" th:selected="${param.sortOrder == 'DESC'}">Descending</option>
-    </select>
-    <button type="submit">Apply Sort</button>
-  </form>
-
   <section id="upcoming-appointments">
     <h2>Upcoming appointments</h2>
+    <p>Sort dates by <a href="/dashboard?sortOrder=desc">latest first</a> or <a href="/dashboard?sortOrder=asc">earliest first</a></p>
     <article th:each="appointment : ${appointments}">
       <a th:href="'/appointment/' + ${appointment.id}">
         <p><b th:text="${appointment.display_date} + ' at ' + ${appointment.start_time}"></b></p>
