@@ -1,10 +1,17 @@
 /* Container for all doctor cards */
+
+body {
+    margin: 0; /* Remove any default body margin */
+    padding-top: 70px; /* Push content down by navbar height (adjust as needed) */
+}
+
 .doctors-container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     padding: 20px;
     justify-content: center;
+
 }
 
 /* Individual doctor card */
