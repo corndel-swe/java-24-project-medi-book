@@ -45,4 +45,9 @@ public class UserController {
             ctx.redirect("/");
         }
     }
+    public static void userLogOut(Context ctx) {
+        ctx.sessionAttribute("userAttributes", null);
+        ctx.redirect("/");
+    }
+
 }

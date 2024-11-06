@@ -10,8 +10,11 @@ import java.util.Map;
 public class DoctorController {
 
     public static void renderDoctors(Context ctx) throws SQLException {
+        Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+        String userimage = (String) userAttributes.get("image");
         List<Doctor> doctors = DoctorRepository.getAllDoctors();
-        ctx.render("doctor_profiles.html", Map.of("doctors", doctors));
+        String name = (String) userAttributes.get("name");
+        ctx.render("doctor_profiles.html", Map.of("doctors", doctors, "userimage", userimage, "name", name));
     }
 
     public static void getAllDoctorsJson(Context ctx) throws SQLException {
