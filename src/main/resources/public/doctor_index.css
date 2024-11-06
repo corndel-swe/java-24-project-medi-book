@@ -1,4 +1,9 @@
 /* Container for all doctor cards */
+body{
+/*    padding-top: 70px;*/
+}
+
+
 .doctors-container {
     display: flex;
     flex-wrap: wrap;
@@ -53,7 +58,7 @@
 }
 
 .doctor-title {
-    text-align:center
+    text-align:center;
 }
 
 .doctor-box {

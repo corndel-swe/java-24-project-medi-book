@@ -1,31 +1,45 @@
-
 .navbar-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between; /* Distribute space between left and right elements */
+    align-items: center; /* Center items vertically */
     height: 60px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: white
+    background-color: white;
     z-index: 1000;
+
 }
 
-
 .navbar-button {
-    margin-left: auto;
+    margin-left: 30px;
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #007bff; /* Change to your desired button color */
     color: #ffffff;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Rounded corners */
     font-weight: bold;
-    margin-right: 30px
+    margin-right: auto;
+
+}
+.navbar-logout {
+    margin-left: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Change to your desired button color */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    margin-right: 30px;
 }
 
 .navbar-button:hover {
     background-color: #0056b3;
 }
+
+
