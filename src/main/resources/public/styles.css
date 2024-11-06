@@ -1,70 +1,8 @@
-/* Container for all doctor cards */
+@font-face {
+    font-family: Figtree;
+    src: url('./Figtree-VariableFont_wght.ttf') format('truetype');
+}
 
 body {
-    margin: 0; /* Remove any default body margin */
-    padding-top: 70px; /* Push content down by navbar height (adjust as needed) */
-}
-
-.doctors-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px;
-    justify-content: center;
-
-}
-
-/* Individual doctor card */
-.doctor-box {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s;
-    background-color: #f9f9f9;
-}
-
-.doctor-box:hover {
-    transform: translateY(-5px);
-}
-
-/* Doctor image */
-.doctor-image {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-/* Doctor name and specialty */
-.doctor-box h3 {
-    font-size: 1.4em;
-    color: #333;
-    margin: 8px 0;
-}
-
-.doctor-box h2 {
-    font-size: 1.1em;
-    color: #777;
-    margin: 8px 0;
-}
-
-/* Doctor biography */
-.doctor-box p {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.5;
-}
-
-.doctor-title {
-    text-align:center
-}
-
-.doctor-box {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+    font-family: Figtree, sans-serif;
 }
