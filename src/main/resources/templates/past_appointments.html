@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <body>
-<div th:replace="~{navbar :: navbar}"></div>
+  <div th:replace="~{navbar :: navbar(${name}, ${userimage})}"></div>
   <h1>Past Appointments</h1>
   <article th:each="appointment : ${appointments}">
     <a th:href="'/appointment/' + ${appointment.id}">

@@ -21,8 +21,8 @@ public class AppointmentController {
   public static void renderDashboard(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
-    String userimage = (String) userAttributes.get("image");
     String name = (String) userAttributes.get("name");
+    String userimage = (String) userAttributes.get("image");
     String sortOrder = ctx.queryParam("sortOrder");
     if (sortOrder == null) {
       sortOrder = "asc";
@@ -35,11 +35,17 @@ public class AppointmentController {
   public static void renderAppointmentHistory(Context ctx) throws SQLException {
     Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
     int userId = (int) userAttributes.get("id");
+    String name = (String) userAttributes.get("name");
+    String userimage = (String) userAttributes.get("image");
     List<Appointment> appointments = appointmentRepository.findPastAppointmentsByUserId(userId);
-    ctx.render("past_appointments", Map.of("appointments", appointments));
+    ctx.render("past_appointments", Map.of("appointments", appointments, "userimage", userimage, "name", name));
   }
 
   public static void renderSingleAppointment(Context ctx) throws SQLException {
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
+    String name = (String) userAttributes.get("name");
+    String userimage = (String) userAttributes.get("image");
     try {
       String idString = ctx.pathParam("id");
       int id = Integer.parseInt(idString);
@@ -48,7 +54,7 @@ public class AppointmentController {
       Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
 
       if (appointment != null) {
-        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor));
+        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor, "userimage", userimage, "name", name));
       } else {
         ctx.status(404).result("Appointment not found");
       }
@@ -85,8 +91,12 @@ public class AppointmentController {
 
 
   public static void renderBookingPage(Context ctx) throws SQLException {
+    Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+    int userId = (int) userAttributes.get("id");
+    String name = (String) userAttributes.get("name");
+    String userimage = (String) userAttributes.get("image");
     List<Doctor> doctors = DoctorRepository.getAllDoctors();
-    ctx.render("book_appointment.html", Map.of("doctors", doctors));
+    ctx.render("book_appointment.html", Map.of("doctors", doctors, "userimage", userimage, "name", name));
   }
 
 

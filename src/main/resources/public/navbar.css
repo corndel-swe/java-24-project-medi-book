@@ -8,37 +8,41 @@
     margin: 0 auto;
     background-color: white;
     z-index: 1000;
-
 }
 
 .navbar-button {
-    margin-left: 30px;
-    display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* Change to your desired button color */
+    background-color: #409fdb; /* Change to your desired button color */
     color: #ffffff;
     text-align: center;
     text-decoration: none;
     border-radius: 5px; /* Rounded corners */
     font-weight: bold;
-    margin-right: auto;
-
-}
-.navbar-logout {
-    margin-left: auto;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff; /* Change to your desired button color */
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px; /* Rounded corners */
-    font-weight: bold;
-    margin-right: 30px;
+    height: fit-content;
 }
 
 .navbar-button:hover {
     background-color: #0056b3;
 }
 
+nav > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-right: 30px;
+}
 
+nav p {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+nav img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #409fdb;
+}

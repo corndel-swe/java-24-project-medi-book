@@ -11,9 +11,9 @@ public class DoctorController {
 
     public static void renderDoctors(Context ctx) throws SQLException {
         Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+        String name = (String) userAttributes.get("name");
         String userimage = (String) userAttributes.get("image");
         List<Doctor> doctors = DoctorRepository.getAllDoctors();
-        String name = (String) userAttributes.get("name");
         ctx.render("doctor_profiles.html", Map.of("doctors", doctors, "userimage", userimage, "name", name));
     }
 
@@ -23,6 +23,9 @@ public class DoctorController {
     }
 
     public static void renderDoctor(Context ctx) throws SQLException {
+        Map<String, Object> userAttributes = ctx.sessionAttribute("userAttributes");
+        String name = (String) userAttributes.get("name");
+        String userimage = (String) userAttributes.get("image");
         try {
             String idString = ctx.pathParam("id");
             int id = Integer.parseInt(idString);
@@ -30,8 +33,7 @@ public class DoctorController {
             Doctor doctor = DoctorRepository.getDoctor(id);
 
             if (doctor != null) {
-                System.out.println(doctor.getProfile_picture());
-                ctx.render("doctor_profile.html", Map.of("doctor", doctor));
+                ctx.render("doctor_profile.html", Map.of("doctor", doctor, "userimage", userimage, "name", name));
             } else {
                 ctx.status(404).result("Doctor not found");
             }
