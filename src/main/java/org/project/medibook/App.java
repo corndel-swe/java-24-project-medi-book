@@ -39,6 +39,7 @@ public class App {
         app.get("/logout", UserController::userLogOut);
 
 
+
         // APPOINTMENT ENDPOINTS
         app.get("/dashboard", AppointmentController::renderDashboard);
         app.get("/appointment-history", AppointmentController::renderAppointmentHistory);
