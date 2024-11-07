@@ -40,7 +40,7 @@ To set up and run the project locally, follow these steps:
   git clone https://github.com/corndel-swe/java-24-project-medi-book.git
   cd medibook
    
-2. **Clean, Compile and Migrate**:
+2. **Database setup - Clean, Compile and Migrate**:
   mvn clean
   mvn compile
   mvn flyway:migrate
