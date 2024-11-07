@@ -18,17 +18,15 @@ public class UserRepository {
 
             var users = new ArrayList<User>();
 
-            if (!rs.next()) {
-                return null;
-            }
-            else {
-                var id = rs.getInt("id");
-                var name = rs.getString("name");
-                var email = rs.getString("email");
-                var profile_picture = rs.getString("image");
+           while (rs.next()) {
+               var id = rs.getInt("id");
+               var name = rs.getString("name");
+               var email = rs.getString("email");
+               var profile_picture = rs.getString("image");
 
-                users.add(new User(id, name, email, profile_picture));
+               users.add(new User(id, name, email, profile_picture));
             }
+
             return users;
         }
 
