@@ -36,13 +36,13 @@ MediBook is a web application that allows users to manage their healthcare appoi
 To set up and run the project locally, follow these steps:
 
 1. **Clone the Repository**:
-  git clone https://github.com/corndel-swe/java-24-project-medi-book.git
-  cd medibook
+- git clone https://github.com/corndel-swe/java-24-project-medi-book.git
+- cd medibook
    
 2. **Database setup - Clean, Compile and Migrate**:
-  mvn clean
-  mvn compile
-  mvn flyway:migrate
+- mvn clean
+- mvn compile
+- mvn flyway:migrate
 
 3. **Run the application**
-   Go into App and run
+- Go into App and run
