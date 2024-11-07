@@ -24,10 +24,12 @@
                     <p>Speciality: <span th:text="${doctor.speciality}"></span></p>
                     <h3>Contact:</h3>
                     <p>Email: medibook@info.com</p>
-                    <form th:action="@{/appointment/{appointmentId}(appointmentId=${appointment.id})}" th:method="post">
-                        <input type="hidden" name="_method" value="DELETE"/>
-                        <button type="submit">Cancel Appointment</button>
-                    </form>
+                    <div th:if="${appointment.date > currentDate}">
+                        <form th:action="@{/appointment/{appointmentId}(appointmentId=${appointment.id})}" th:method="post">
+                            <input type="hidden" name="_method" value="DELETE"/>
+                            <button type="submit">Cancel Appointment</button>
+                        </form>
+                    </div>
                 </div>
                 <figure class="doctor-image-container">
                     <img th:src="'/' + ${doctor.profile_picture}" th:alt="'Profile image of ' + ${doctor.name}" class="doctor-image">

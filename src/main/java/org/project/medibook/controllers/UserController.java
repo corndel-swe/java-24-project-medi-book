@@ -12,11 +12,17 @@ import java.util.Map;
 
 public class UserController {
 
+    public static void renderLogInPage(Context ctx) {
+        ctx.render("index.html");
+        ctx.status(200);
+
+    }
+
     public static void getAll(Context ctx) {
         try {
             List<User> Users = UserRepository.findAll();
-            ctx.render("index.html", Map.of("Users", Users));
-            ctx.status(200);
+            ctx.json(Users).status(200);
+            System.out.println(Users);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
