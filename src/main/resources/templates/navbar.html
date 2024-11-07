@@ -1,7 +1,7 @@
 <nav th:fragment="navbar(name, userimage)" class="navbar-box">
   <a class="navbar-button" href="/dashboard">Home</a>
   <div>
-    <p th:text="'Welcome, ' + ${name}"></p>
+    <p th:text="${name}"></p>
     <img th:src="'/' + ${userimage}" alt="Account profile picture">
     <a class="navbar-button" href="logout">Logout</a>
   </div>
