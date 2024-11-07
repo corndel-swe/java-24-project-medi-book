@@ -5,7 +5,6 @@
 }
 
 body {
-    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
     display: grid;
@@ -80,9 +79,13 @@ button:hover:not(:disabled) {
     color: #2980b9;
 }
 
-p {
+main p {
     text-align: center;
     margin-top: 20px;
+}
+
+a {
+    transition: background-color 0.3s;
 }
 
 form a {
@@ -93,7 +96,11 @@ form a {
     padding: 10px 15px;
     border: 1px solid #2980b9;
     border-radius: 4px;
-    transition: background-color 0.3s;
+}
+
+a[href='/doctors'] {
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
 }
 
 a:hover {
