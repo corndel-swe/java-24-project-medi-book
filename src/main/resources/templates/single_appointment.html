@@ -24,7 +24,6 @@
                     <p>Speciality: <span th:text="${doctor.speciality}"></span></p>
                     <h3>Contact:</h3>
                     <p>Email: medibook@info.com</p>
-<!--                    <button onclick="deleteAppointment()">Delete appointment</button>-->
                     <div th:if="${appointment.date > currentDate}">
                         <form th:action="@{/appointment/{appointmentId}(appointmentId=${appointment.id})}" th:method="post">
                             <input type="hidden" name="_method" value="DELETE"/>
@@ -40,20 +39,6 @@
         </article>
     </section>
 </main>
-<!--    <script>-->
-<!--        function deleteAppointment(appointmentId) {-->
-<!--            console.log("method invoked");-->
-<!--            fetch(`/appointment/${appointmentId}`, {-->
-<!--                method: 'DELETE'-->
-<!--            })-->
-<!--            .then(response => {-->
-<!--                if (!res.ok) {-->
-<!--                    alert(response.text() + ' Failed to delete appointment.')-->
-<!--                }-->
-<!--                window.location.href = '/dashboard'-->
-<!--            })-->
-<!--        }-->
-<!--    </script>-->
 </body>
 </html>
 
