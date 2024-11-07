@@ -54,7 +54,8 @@ public class AppointmentController {
       Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
 
       if (appointment != null) {
-        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor, "userimage", userimage, "name", name));
+        ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor, "userimage", userimage, "name", name,
+                "currentDate", LocalDate.now()));
       } else {
         ctx.status(404).result("Appointment not found");
       }
