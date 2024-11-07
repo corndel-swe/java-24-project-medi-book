@@ -36,7 +36,6 @@ MediBook is a web application that allows users to manage their healthcare appoi
 To set up and run the project locally, follow these steps:
 
 1. **Clone the Repository**:
-   ```bash
   git clone https://github.com/corndel-swe/java-24-project-medi-book.git
   cd medibook
    
