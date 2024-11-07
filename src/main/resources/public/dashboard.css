@@ -16,7 +16,7 @@ body {
 
 h1 {
     margin: 0.25rem;
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     grid-row: 2 / 3;
     grid-column: 1 / 3;
     justify-self: center;
@@ -41,6 +41,12 @@ section {
     grid-column: 1 / 2;
     justify-contents: flex-start;
     gap: 1.5rem;
+}
+
+.sort {
+    background-color: #409fdb;
+    color: white;
+    padding: 0.25rem 0.5rem;
 }
 
 #upcoming-appointments article {
