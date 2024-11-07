@@ -1,7 +1,6 @@
-/* Body and Title Styles */
 body {
-    margin: 0;
-    background-color: #f0f0f0;
+    margin: 0 auto;
+    max-width: 1000px;
     display: grid;
     grid-template-rows: auto auto;
 }
@@ -30,8 +29,7 @@ main {
 
 /* Individual doctor box */
 .doctor-box {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
     padding: 30px;
     border: 1px solid #ddd;
     border-radius: 12px;
