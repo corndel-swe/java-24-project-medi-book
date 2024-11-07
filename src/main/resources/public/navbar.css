@@ -4,9 +4,8 @@
     align-items: center; /* Center items vertically */
     height: 60px;
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    max-width: 1000px;
+    margin: 0 auto;
     background-color: white;
     z-index: 1000;
 
