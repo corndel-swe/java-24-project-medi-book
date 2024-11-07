@@ -33,7 +33,8 @@ public class App {
         app.get("/hello", ctx -> ctx.result("Hello, World!"));
 
         // USER ENDPOINTS
-        app.get("/", UserController::getAll);
+        app.get("/", UserController::renderLogInPage);
+        app.get("/users", UserController::getAll);
         app.post("/login", UserController::userLogIn);
         app.get("/logout", UserController::userLogOut);
 
