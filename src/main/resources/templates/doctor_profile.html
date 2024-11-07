@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/doctor.css">
 </head>
 <body>
-<div th:replace="~{navbar :: navbar}"></div>
+<div th:replace="~{navbar :: navbar(${name}, ${userimage})}"></div>
 <main class="doctor-container">
     <div class="doctor-box">
         <img th:src="'/' + ${doctor.profile_picture}" alt="Doctor Image" class="doctor-image">

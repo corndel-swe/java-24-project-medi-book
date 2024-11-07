@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/navbar.css">
 </head>
 <body>
-<div th:replace="~{navbar :: navbar}"></div>
+    <div th:replace="~{navbar :: navbar(${name}, ${userimage})}"></div>
     <main>
         <h1>Book an Appointment</h1>
         <form id="appointmentForm">

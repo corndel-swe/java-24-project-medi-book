@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/navbar.css">
 </head>
 <body>
-<div th:replace="~{navbar :: navbar}"></div>
+<div th:replace="~{navbar :: navbar(${name}, ${userimage})}"></div>
 <main>
     <h1 class="appointment-title">Appointment Details</h1>
     <section class="appointment-container">
