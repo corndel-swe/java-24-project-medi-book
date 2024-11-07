@@ -24,6 +24,7 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
+    margin: 0;
 }
 
 section {
@@ -43,10 +44,20 @@ section {
     gap: 1.5rem;
 }
 
+section > p {
+    margin: 0;
+}
+
 .sort {
     background-color: #409fdb;
     color: white;
     padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.sort:hover {
+    background-color: #0056b3;
 }
 
 #upcoming-appointments article {
