@@ -24,6 +24,7 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
+    margin: 0;
 }
 
 section {
@@ -43,10 +44,20 @@ section {
     gap: 1.5rem;
 }
 
+section > p {
+    margin: 0;
+}
+
 .sort {
     background-color: #409fdb;
     color: white;
     padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.5s;
+}
+
+.sort:hover {
+    background-color: #0056b3;
 }
 
 #upcoming-appointments article {
@@ -55,6 +66,11 @@ section {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     width: 475px;
     padding: 1rem;
+    transition: transform 0.5s;
+}
+
+#upcoming-appointments article:hover {
+    transform: translateY(-5px);
 }
 
 #upcoming-appointments article > a {
@@ -94,12 +110,20 @@ section {
 }
 
 #links a {
+    font-weight: 600;
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     padding: 1.25rem;
     width: fit-content;
     font-size: 1.25rem;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s;
+}
+
+#links a:hover {
+    background-color: #409fdb;
+    color: #2c3e50;
+    transform: translateY(-5px);
 }
 
 

@@ -30,6 +30,11 @@ article {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     width: 475px;
     padding: 1rem;
+    transition: transform 0.5s;
+}
+
+article:hover {
+    transform: translateY(-5px);
 }
 
 article > a {

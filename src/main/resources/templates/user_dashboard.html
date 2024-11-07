@@ -15,7 +15,7 @@
 
   <section id="upcoming-appointments">
     <h2>Upcoming appointments</h2>
-    <p>Sort dates by <a href="/dashboard?sortOrder=desc" class="sort">latest first</a> or <a href="/dashboard?sortOrder=asc" class="sort">earliest first</a></p>
+    <p>Sort dates by <a href="/dashboard?sortOrder=desc" class="sort">latest</a> or <a href="/dashboard?sortOrder=asc" class="sort">earliest</a></p>
     <article th:each="appointment : ${appointments}">
       <a th:href="'/appointment/' + ${appointment.id}">
         <p th:text="${appointment.doctor_name}"></p>
