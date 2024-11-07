@@ -77,12 +77,22 @@ INSERT INTO appointments (user_id, doctor_id, start_time, date, comment) VALUES
 (6, 6, '16:00', '2024-11-07', 'Follow-up on migraine treatment.'),
 
 -- Full day booking for Doctor 1 on November 8, 2024
-(1, 1, '09:00', '2024-11-08', 'Morning consultation.'),
-(1, 1, '10:00', '2024-11-08', 'Follow-up appointment.'),
-(1, 1, '11:00', '2024-11-08', 'Routine check-up.'),
-(1, 1, '12:00', '2024-11-08', 'Patient review.'),
-(1, 1, '13:00', '2024-11-08', 'Post-surgery follow-up.'),
-(1, 1, '14:00', '2024-11-08', 'Follow-up on treatment plan.'),
-(1, 1, '15:00', '2024-11-08', 'Medication review.'),
-(1, 1, '16:00', '2024-11-08', 'Final consultation of the day.');
+(1, 1, '09:00', '2024-11-09', 'Morning consultation.'),
+(1, 1, '10:00', '2024-11-09', 'Follow-up appointment.'),
+(1, 1, '11:00', '2024-11-09', 'Routine check-up.'),
+(1, 1, '12:00', '2024-11-09', 'Patient review.'),
+(1, 1, '13:00', '2024-11-09', 'Post-surgery follow-up.'),
+(1, 1, '14:00', '2024-11-09', 'Follow-up on treatment plan.'),
+(1, 1, '15:00', '2024-11-09', 'Medication review.'),
+(1, 1, '16:00', '2024-11-09', 'Final consultation of the day.'),
+
+-- Single booking for Doctor 1 on November 10, 2024
+(1, 1, '09:00', '2024-11-10', 'General consultation.'),
+
+-- Single booking for Doctor 1 on November 11, 2024
+(1, 1, '09:00', '2024-11-11', 'Routine check-up.'),
+
+-- Single booking for Doctor 1 on November 12, 2024
+(1, 1, '09:00', '2024-11-12', 'Follow-up appointment.');
+
 
