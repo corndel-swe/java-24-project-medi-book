@@ -4,17 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/appointmentHistory.css">
   <link rel="stylesheet" href="/navbar.css">
   <title>Document</title>
 </head>
 <body>
   <div th:replace="~{navbar :: navbar(${name}, ${userimage})}"></div>
-  <h1>Past Appointments</h1>
-  <article th:each="appointment : ${appointments}">
-    <a th:href="'/appointment/' + ${appointment.id}">
-      <p><b th:text="${appointment.display_date} + ' at ' + ${appointment.start_time}"></b></p>
-      <p th:text="${appointment.doctor_name}"></p>
-    </a>
-  </article>
+  <main>
+    <h1>Past Appointments</h1>
+    <section>
+      <article th:each="appointment : ${appointments}">
+        <a th:href="'/appointment/' + ${appointment.id}">
+          <p th:text="${appointment.doctor_name}"></p>
+          <p><b th:text="${appointment.display_date}"></b></p>
+          <p><b th:text="${appointment.start_time}"></b></p>
+          <img th:src="${appointment.doctor_image}" alt="Doctor's profile picture"/>
+        </a>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
