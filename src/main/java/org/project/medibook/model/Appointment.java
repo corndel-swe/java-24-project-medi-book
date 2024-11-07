@@ -15,6 +15,7 @@ public class Appointment {
   private String comment;
   private String doctor_name;
   private String display_date;
+  private String doctor_image;
 
   public Appointment() {
   }
@@ -38,6 +39,7 @@ public class Appointment {
     appointment.setComment(rs.getString("comment"));
     appointment.setDoctor_name(rs.getString("name"));
     appointment.setDisplay_date(LocalDate.parse(rs.getString("date")));
+    appointment.setDoctor_image(rs.getString("image"));
     return appointment;
   }
 
@@ -99,6 +101,14 @@ public class Appointment {
 
   public String getDisplay_date() {
     return display_date;
+  }
+
+  public void setDoctor_image(String doctor_image) {
+    this.doctor_image = doctor_image;
+  }
+
+  public String getDoctor_image() {
+    return doctor_image;
   }
 
   public void setDisplay_date(LocalDate date) {

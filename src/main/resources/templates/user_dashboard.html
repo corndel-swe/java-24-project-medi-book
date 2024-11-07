@@ -22,8 +22,10 @@
     <p>Sort dates by <a href="/dashboard?sortOrder=desc">latest first</a> or <a href="/dashboard?sortOrder=asc">earliest first</a></p>
     <article th:each="appointment : ${appointments}">
       <a th:href="'/appointment/' + ${appointment.id}">
-        <p><b th:text="${appointment.display_date} + ' at ' + ${appointment.start_time}"></b></p>
         <p th:text="${appointment.doctor_name}"></p>
+        <p><b th:text="${appointment.display_date}"></b></p>
+        <p><b th:text="${appointment.start_time}"></b></p>
+        <img th:src="${appointment.doctor_image}" alt="Doctor's profile picture"/>
       </a>
     </article>
   </section>
