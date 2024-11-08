@@ -1,6 +1,6 @@
 /* Body and Title Styles */
 body {
-    margin: 0 auto;
+    margin: 1rem auto 2rem;
     max-width: 1000px;
     display: grid;
     grid-template-rows: auto auto;
