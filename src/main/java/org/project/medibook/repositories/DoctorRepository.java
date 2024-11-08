@@ -46,7 +46,6 @@ public class DoctorRepository {
                 if (!rs.next()) {
                     return null;
                 }
-
                 var name = rs.getString("name");
                 var speciality = rs.getString("speciality");
                 var image = rs.getString("image");
@@ -56,6 +55,4 @@ public class DoctorRepository {
             }
         }
     }
-
-
 }

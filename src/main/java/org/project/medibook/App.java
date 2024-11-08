@@ -9,6 +9,8 @@ import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import io.javalin.rendering.template.JavalinThymeleaf;
 
+import java.util.Map;
+
 public class App {
     public static void main(String[] args) {
         var javalin = createApp();
@@ -59,6 +61,12 @@ public class App {
         app.get("/doctors/list", DoctorController::getAllDoctorsJson);
         app.get("/doctors", DoctorController::renderDoctors);
         app.get("/doctor/{id}", DoctorController::renderDoctor);
+
+
+        app.error(404, (ctx) -> {
+            ctx.status(404);
+            ctx.render("error.html", Map.of("errorMessage", "The page you are looking for could not be found."));
+        });
 
         return app;
     }
