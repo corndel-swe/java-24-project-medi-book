@@ -46,21 +46,22 @@ public class AppointmentController {
     int userId = (int) userAttributes.get("id");
     String name = (String) userAttributes.get("name");
     String userimage = (String) userAttributes.get("image");
-    try {
-      String idString = ctx.pathParam("id");
-      int id = Integer.parseInt(idString);
+    String idString = ctx.pathParam("id");
 
+    try {
+      int id = Integer.parseInt(idString);
       Appointment appointment = AppointmentRepository.getSingleAppointment(id);
-      Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
 
       if (appointment != null) {
+        Doctor doctor = DoctorRepository.getDoctor(appointment.getDoctor_id());
         ctx.render("single_appointment.html", Map.of("appointment", appointment, "doctor", doctor, "userimage", userimage, "name", name,
-                "currentDate", LocalDate.now()));
+            "currentDate", LocalDate.now()));
       } else {
-        ctx.status(404).result("Appointment not found");
+        System.out.println("...");
+        ctx.status(404).render("error.html", Map.of("errorMessage", "Appointment not found"));
       }
     } catch (NumberFormatException e) {
-      ctx.status(400).result("Invalid Appointment ID");
+      ctx.status(400).render("error.html", Map.of("errorMessage", "Invalid Appointment ID"));
     }
   }
 
@@ -128,7 +129,7 @@ public class AppointmentController {
       ctx.status(204).redirect("/dashboard");
     } catch (Exception e) {
       if (e.getMessage().equals("Appointment not found.")) {
-        ctx.status(404).result("Appointment not found.");
+        ctx.status(404).render("error.html", Map.of("errorMessage", "Appointment not found."));
       }
     }
   }
