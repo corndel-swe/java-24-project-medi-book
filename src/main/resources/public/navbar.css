@@ -16,7 +16,7 @@
     color: #ffffff;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 10px; /* Rounded corners */
     font-weight: bold;
     height: fit-content;
     transition: background-color 0.5s;

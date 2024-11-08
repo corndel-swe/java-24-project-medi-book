@@ -2,6 +2,7 @@
 body {
     display: grid;
     grid-template-rows: auto auto;
+    margin: 1rem auto 2rem;
 }
 
 .navbar-box {
